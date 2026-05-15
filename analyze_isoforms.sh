@@ -57,8 +57,7 @@ echo "STEP 4: RNA-seq alignment"
 hisat2 \
 -p $THREADS \
 -x genome/genome_idx \
--1 $READ1 \
--2 $READ2 \
+-U $(ls reads/*.fastq.gz | paste -sd,) \
 | samtools sort -@ $THREADS \
 -o alignments/rnaseq.bam
 
